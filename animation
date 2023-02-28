@@ -1,0 +1,86 @@
+import simplegui
+import random
+x = 300
+y = 470
+a = 485
+b = 470
+c = 260
+d = 340
+g = 300
+width = 600
+height = 600
+
+def draw_handler(canvas):
+    for i in range(10):
+        e = random.randint(0,width)
+        f = random.randint(0,height)
+        canvas.draw_circle((e,f), 10, 1,"blue","lightblue")
+    #tail
+    global g
+    canvas.draw_line((g,20),(300,300),1,"black")
+    if g != 400:
+        g = g + 10
+    else:
+        g = g - 300
+    #body
+    canvas.draw_circle((300, 300), 180, 1, "black", "grey")
+    #head
+    canvas.draw_circle((300, 350), 100, 1, "black", "grey")
+    #ears
+    canvas.draw_polygon([(450, 275),(350, 300),(400, 350)],1,"black","grey") 
+    canvas.draw_polygon([(250, 275),(150, 270),(200, 350)],1,"black","grey") 
+    #nose
+    canvas.draw_polygon([(320, 420),(300, 435),(280, 420)],1,"black","pink")
+    #whiskers
+    canvas.draw_line((250,400),(150,360), 1, "black")
+    canvas.draw_line((250,410),(150,395), 1, "black")
+    canvas.draw_line((350,400),(450,360), 1, "black")
+    canvas.draw_line((350,410),(450,395), 1, "black")
+    #arms
+    global b
+    canvas.draw_line((450,400),(450,b),1,"black")
+
+    global y
+    canvas.draw_line((150,400),(100,y),1,"black")
+    if y != 470:
+        y = y + 50
+    else:
+        y = y - 200
+
+    #paws
+    canvas.draw_circle((450, 490), 20, 1, "black", "grey")
+    global a
+    canvas.draw_circle((90, a), 20, 1, "black", "grey")
+    if a != 485:
+        a = a + 50
+    else:
+        a = a - 200
+    #eyes
+    canvas.draw_circle((260,390),15,1,"black","white")
+    canvas.draw_circle((340,390),15,1,"black","white")
+    #pupil
+    global d
+    canvas.draw_circle((d,395),3,1,"black","black")
+    if d != 340:
+        d = d +1
+    else:
+        d = d -2
+    global c
+    canvas.draw_circle((c,395),3,1,"black","black")
+    if c != 260:
+        c = c + 1
+    else:
+        c = c - 2
+    #ball
+    global x
+    canvas.draw_circle((x, 500), 50, 1, "black", "lightblue")
+    if x!=450:
+        x=x+50
+    else:
+        x = x - 300
+   
+ 
+frame = simplegui.create_frame('Cat', 600, 600)
+frame.set_canvas_background("pink")
+frame.set_draw_handler(draw_handler)
+frame.start()
